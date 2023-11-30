@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-page">
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.search.label }}<br>
+            {{ form.search(size=32) }}<br>
+            {% for error in form.search.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+
+        <h3>Вот что нашлось по вашему запросу</h3>
+    {% for m in medicaments %}
+        <p><a href="{{ url_for('about_medicament', type=m[3], id = m[0], search=search) }}"><span style="color: black;">{{m[1]}} (скидка <u>{{m[2]}}%</u>)</span></a></p>
+    {% endfor %}
+    <a href="{{ url_for('medicaments_catalog') }}">Назад</a>
+
+        
+    </form>
+</div>
+{% endblock %}

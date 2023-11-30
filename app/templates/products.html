@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <h3>Список товаров в аптеке</h3>
+    <hr>
+    {% for p in products %}
+        <p>{{p[1]}} (Стоимость {{p[2]}}₽ - {{p[3]}}%)</p>
+        <p><a href="{{ url_for('update_sale', product_id = p[0]) }}"><span style="color: black;">Установить скидку</span></a></p>
+        <p><a href="{{ url_for('update_cost', product_id = p[0]) }}"><span style="color: black;">Сменить цену товара</span></a></p>
+        <hr>
+    {% endfor %}
+    <a href="{{ url_for('admin', username = current_user.username) }}">Назад</a>
+
+        
+
+{% endblock %}

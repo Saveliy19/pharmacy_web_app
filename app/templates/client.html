@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>{{ user.name }}</h1>
+    <p>{{ user.email }}</p>
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+
+        <hr>
+        <h2>Корзина</h2>
+        {% for c in cart %}
+        <hr>
+        <p>Продукт: {{c[0]}}</p>
+        <p>Стоимость за единицу: {{c[1]}} - {{c[3]}}% = {{((100-c[3])/100)*c[1]}}</p>
+        <p>В корзине: {{c[2]}}</p>
+        {% endfor %}
+        <p>Итого в корзине на {{cart_summ}} рублей</p>
+        <p>{{ form.submit() }}</p>
+
+        <hr>
+        
+    <h2><a href="{{ url_for('uncomplited_offers', email = current_user.email) }}">Мои заказы</a></h2>
+
+    
+    <hr>
+    <h2><a href="{{ url_for('offers_history', email = current_user.email) }}">История</a></h2>
+    <hr>
+        
+    </form>
+{% endblock %}

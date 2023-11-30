@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Введите данные для оплаты</h1>
+
+    <p>Стоимость заказа: <u>{{cost}}</u></p>
+    <form action="" method="post"  novalidate>
+
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.number.label }}<br>
+                {{ form.number(size=32) }}<br>
+                {% for error in form.number.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.submit(size=32) }}<br>
+                {% for error in form.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+        </form>
+
+{% endblock %}

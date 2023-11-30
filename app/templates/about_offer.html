@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+
+    <h3>О заказе</h3>
+    <p>Дата заказа: {{information[0][0]}}</p>
+    <p>Примерная дата готовности: {{information[0][1]}}</p>
+    <p>Статус заказа: {{information[0][2]}}</p>
+    <p>Получение: {{information[0][3]}}</p>
+    <p>Оплата: {{information[0][4]}}</p>
+    <p>Хранение до: {{information[0][5]}}</p>
+    <p>Адрес доставки: {{information[0][6]}}</p>
+    <p>Стоимость заказа: {{information[0][7]}}</p>
+
+    <h3>Список товаров в заказе</h3>
+    <hr>
+    {% for p in products %}
+        <p>Продукт: {{p[0]}}</p>
+
+        <p>Стоимость: {{p[1]}}₽ - {{p[3]}}% x {{p[2]}} = {{((100-p[3])/100)*p[1]*p[2]}}₽</p>
+    {% endfor %}
+
+    <hr>
+    <a href="{{ url_for('client', email = current_user.email) }}">Назад</a>
+
+{% endblock %}

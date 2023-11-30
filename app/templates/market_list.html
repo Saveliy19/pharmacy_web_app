@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    {% for m in markets %}
+        <p><a href="{{ url_for('about_medicament', type=m[3], id = m[0], search=search) }}"><span style="color: black;">{{m[1]}} (скидка <u>{{m[2]}}%</u>)</span></a></p>
+    {% endfor %}
+    <a href="{{ url_for('medicaments_catalog') }}">Назад</a>
+
+        
+
+{% endblock %}

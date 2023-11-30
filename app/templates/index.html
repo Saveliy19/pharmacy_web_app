@@ -1,0 +1,32 @@
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-page">
+    <form action="" method="post"  novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.search.label }}<br>
+            {{ form.search(size=32) }}<br>
+            {% for error in form.search.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+
+        <p><a href="{{ url_for('medicaments_catalog') }}">Каталог</a></p>
+        <p><a href="{{ url_for('markets') }}">Аптеки</a></p>
+        
+
+    <h3>Вас может заинтересовать</h3>
+    <p><a href="{{ url_for('about_type', type='sale', search='nothing') }}"><span style="color: black;">Товары со скидкой</span></a></p>
+    <p><a href="{{ url_for('about_type', type='Оптика', search='nothing') }}"><span style="color: black;">Оптика</span></a></p>
+    <p><a href="{{ url_for('about_type', type='Косметика', search='nothing') }}"><span style="color: black;">Косметика</span></a></p>
+
+
+        
+    </form>
+</div>
+{% endblock %}

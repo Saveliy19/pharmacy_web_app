@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+
+    <form action="" method="post"  novalidate>
+
+    
+
+    
+
+    <img src="{{information[0][6]}}" height="30%" width = "15%" alt="product">
+
+    <h3>{{information[0][1]}}</h3>
+    <h4>Информация о товаре</h4>
+    <p>{{information[0][5]}}</p>
+    <p>Выдается <u>{{recept}}</u></p>
+    <p>Стоимость: {{information[0][4]}}₽ - {{information[0][7]}}% = <u>{{summ}}₽</u></p>
+    <h4>Наличие:</h4>
+    {% for m in markets %}
+        <p><a href="{{ url_for('about_market', id=m[0]) }}"><span style="color: black;">{{m[1]}}</u></span></a></p>
+    {% endfor %}
+
+    {% if  current_user.role == "client" %}
+    {{ form.count.label }}<br>
+    {{ form.count }}<br>
+    {% for error in form.count.errors %}
+    <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+</p>
+{{ form.hidden_tag() }}
+<p>{{ form.submit() }}</p>
+        {% endif %}
+        <p>
+            
+
+    </form>
+
+    <a href="{{ url_for('about_type', type=type, search=search) }}">Назад</a>
+
+{% endblock %}

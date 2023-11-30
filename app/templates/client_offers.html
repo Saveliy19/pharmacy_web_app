@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Список заказов</h2>
+    <hr>
+    
+    {% for o in offers %}
+        <p>Заказ №<a href="{{ url_for('about_offer',  id = o[0]) }}"><span style="color: black;">{{o[0]}}</span></a></p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

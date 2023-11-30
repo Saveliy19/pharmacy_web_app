@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>{{ user.name }}</h2>
+    <h3>Администратор</h3>
+    <p>{{market[0][0]}}</p>
+    <h3>Режим работы</h3>
+    <p>{{market[0][1]}} - {{market[0][2]}}</p>
+    <p><a href="{{ url_for('change_working_time', adres = market[0][0]) }}">Сменить режим работы</a></p>
+    <hr>
+
+    
+    <p><a href="{{ url_for('offers_for_delivery', taking_type= 'Самовывоз') }}">Самовывоз</a></p>
+    <p><a href="{{ url_for('offers_for_delivery', taking_type= 'Курьерская доставка') }}">Доставка</a></p>
+    <p><a href="{{ url_for('new_product_in_market', adres=market[0][0]) }}">Новый товар в наличии</a></p>
+    <p><a href="{{ url_for('products', adres=market[0][0]) }}">Изменить стоимость товара</a></p>
+
+
+
+{% endblock %}
